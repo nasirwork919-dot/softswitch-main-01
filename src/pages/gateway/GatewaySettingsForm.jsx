@@ -6,9 +6,8 @@ import axios from 'axios';
 import { API_BASE_URL } from '../../api';
 import ModulePage from '../../components/common/ModulePage';
 
-const [settings, setSettings] = useState(null);
-
 const GatewaySettingsForm = () => {
+    const [settings, setSettings] = useState(null); // Moved inside the component
     const [provider, setProvider] = useState('Stripe');
     const [apiKey, setApiKey] = useState('');
     const [secretKey, setSecretKey] = useState('');
@@ -20,16 +19,15 @@ const GatewaySettingsForm = () => {
         const fetchSettings = async () => {
             try {
               const response = await axios.get(`${API_BASE_URL}/settings`);
-setSettings(response.data);
+              setSettings(response.data);
 
-const gatewaySettings = response.data.gateway || {};
-setProvider(gatewaySettings.provider || "Stripe");
-setApiKey(gatewaySettings.apiKey || "");
-setSecretKey(gatewaySettings.secretKey || "");
-setCurrency(gatewaySettings.currency || "USD");
-setWebhookUrl(gatewaySettings.webhookUrl || "");
+              const gatewaySettings = response.data.gateway || {};
+              setProvider(gatewaySettings.provider || "Stripe");
+              setApiKey(gatewaySettings.apiKey || "");
+              setSecretKey(gatewaySettings.secretKey || "");
+              setCurrency(gatewaySettings.currency || "USD");
+              setWebhookUrl(gatewaySettings.webhookUrl || "");
 
-                
             } catch (error) {
                 console.error('Failed to fetch Gateway settings:', error);
             }
@@ -48,14 +46,14 @@ setWebhookUrl(gatewaySettings.webhookUrl || "");
             };
             if (!settings) return alert("Settings not loaded yet.");
 
-const payload = {
-  ...settings,        // keeps theme + smtp
-  gateway: gatewayData,
-};
+            const payload = {
+              ...settings,        // keeps theme + smtp
+              gateway: gatewayData,
+            };
 
-const res = await axios.put(`${API_BASE_URL}/settings`, payload);
-setSettings(res.data);
-alert("Gateway settings saved successfully!");
+            const res = await axios.put(`${API_BASE_URL}/settings`, payload);
+            setSettings(res.data);
+            alert("Gateway settings saved successfully!");
 
         } catch (error) {
             console.error('Failed to save Gateway settings:', error);
