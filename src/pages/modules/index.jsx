@@ -6,7 +6,7 @@ import {
     Palette, Mail, CreditCard, Code2, FileBarChart, ShieldAlert, Settings as SettingsIcon
 } from 'lucide-react';
 import EmailSettingsForm from '../email/EmailSettingsForm'; // Import the new component
-import GatewaySettingsForm from './gateway/GatewaySettingsForm'; // Import the new Gateway component
+import GatewaySettingsForm from '../gateway/GatewaySettingsForm'; // Corrected import path
 
 const TablePlaceholder = () => (
     <div className="p-8 text-center">
