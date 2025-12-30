@@ -77,7 +77,7 @@ const AppAdsPage = () => {
                 <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
                     <h2 className="text-xl font-bold text-gray-900 tracking-tight">Ad Campaigns</h2>
                     <button
-                        onClick={() => navigate('/app-ads/add')} {/* Assuming an Add App Ad route */}
+                        onClick={() => navigate('/app-ads/add')} 
                         className="flex items-center gap-2 px-6 py-2.5 bg-indigo-600 text-white font-bold rounded-xl shadow-lg shadow-indigo-200 hover:bg-indigo-700 transition-all active:scale-95"
                     >
                         <Plus className="h-5 w-5" />
