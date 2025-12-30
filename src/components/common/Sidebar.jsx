@@ -116,7 +116,7 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar, isCollapsed }) => {
         { name: "Proxy VPN", icon: ShieldCheck, path: "/proxy-vpn" },
         { name: "Payload", icon: Box, path: "/payload" },
         { name: "DNS", icon: Network, path: "/dns" },
-        { name: "App Store", icon: AppWindow, path: "/app-store" },
+        { name: "App Store", icon: AppWindow, path: "/application" }, {/* Changed path from /app-store to /application */}
         { name: "Panel Notice", icon: BellRing, path: "/panel-notice" },
         { name: "App Notice", icon: Smartphone, path: "/app-notice" },
         { name: "App Ads", icon: Megaphone, path: "/app-ads" },
