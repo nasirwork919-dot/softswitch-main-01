@@ -5,8 +5,10 @@ import {
     AppWindow, BellRing, Smartphone, Megaphone, ShoppingCart, Key, FileCode,
     Palette, Mail, CreditCard, Code2, FileBarChart, ShieldAlert, Settings as SettingsIcon
 } from 'lucide-react';
-import EmailSettingsForm from '../email/EmailSettingsForm'; // Import the new component
-import GatewaySettingsForm from '../gateway/GatewaySettingsForm'; // Corrected import path
+import EmailSettingsForm from '../email/EmailSettingsForm';
+import GatewaySettingsForm from '../gateway/GatewaySettingsForm';
+import AppNoticePage from './AppNoticePage'; // Import the new AppNoticePage
+import AppAdsPage from './AppAdsPage';     // Import the new AppAdsPage
 
 const TablePlaceholder = () => (
     <div className="p-8 text-center">
@@ -71,11 +73,11 @@ export const PanelNotice = createModule("Panel Notice", "Manage notifications di
 
 export const AppNotice = createModule("App Notice", "Manage push notifications and in-app messages.", Smartphone, [
     { label: "Delivered", value: "854k", trend: "up", change: "15k" }
-]);
+], AppNoticePage); // Use the new AppNoticePage component
 
 export const AppAds = createModule("App Ads", "Configure and monitor in-app advertisement campaigns.", Megaphone, [
     { label: "CTR", value: "2.4%", trend: "up", change: "0.2%" }
-]);
+], AppAdsPage); // Use the new AppAdsPage component
 
 export const EShop = createModule("E Shop", "Manage digital products, pricing, and shop settings.", ShoppingCart, [
     { label: "Daily Sales", value: "$12,450", trend: "up", change: "15%" }
@@ -95,11 +97,11 @@ export const Theme = createModule("Theme", "Customize the visual appearance and 
 
 export const Email = createModule("Email", "Configure SMTP settings and monitor outgoing mail.", Mail, [
     { label: "Delivery Rate", value: "98.5%", trend: "up", change: "0.5%" }
-], EmailSettingsForm); // Pass EmailSettingsForm as the content component
+], EmailSettingsForm);
 
 export const Gateway = createModule("Gateway", "Manage payment gateways and transaction processing.", CreditCard, [
     { label: "Successful Trans", value: "95.2%", trend: "up", change: "1.2%" }
-], GatewaySettingsForm); // Pass GatewaySettingsForm as the content component
+], GatewaySettingsForm);
 
 export const PanelAPI = createModule("Panel API", "Manage API keys and external integration settings.", Code2, [
     { label: "Daily Requests", value: "2.5M", trend: "up", change: "0.2M" }

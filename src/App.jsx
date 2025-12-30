@@ -64,7 +64,9 @@ const App = () => {
           <Route path="panel-notice" element={<PanelNotice />} />
           <Route path="panel-notice/add" element={<AddPanelNotice />} />
           <Route path="app-notice" element={<AppNotice />} />
+          <Route path="app-notice/add" element={<AddPanelNotice />} {/* Placeholder for AddAppNotice */} />
           <Route path="app-ads" element={<AppAds />} />
+          <Route path="app-ads/add" element={<AddPanelNotice />} {/* Placeholder for AddAppAd */} />
 
           {/* Management */}
           <Route path="e-shop" element={<EShop />} />
