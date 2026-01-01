@@ -7,8 +7,9 @@ import {
 } from 'lucide-react';
 import EmailSettingsForm from '../email/EmailSettingsForm';
 import GatewaySettingsForm from '../gateway/GatewaySettingsForm';
-import AppNoticePage from './AppNoticePage'; // Import the new AppNoticePage
-import AppAdsPage from './AppAdsPage';     // Import the new AppAdsPage
+import AppNoticePage from './AppNoticePage';
+import AppAdsPage from './AppAdsPage';
+import EShopPage from '../e-shop/EShopPage'; // Import the new EShopPage
 
 const TablePlaceholder = () => (
     <div className="p-8 text-center">
@@ -73,15 +74,15 @@ export const PanelNotice = createModule("Panel Notice", "Manage notifications di
 
 export const AppNotice = createModule("App Notice", "Manage push notifications and in-app messages.", Smartphone, [
     { label: "Delivered", value: "854k", trend: "up", change: "15k" }
-], AppNoticePage); // Use the new AppNoticePage component
+], AppNoticePage);
 
 export const AppAds = createModule("App Ads", "Configure and monitor in-app advertisement campaigns.", Megaphone, [
     { label: "CTR", value: "2.4%", trend: "up", change: "0.2%" }
-], AppAdsPage); // Use the new AppAdsPage component
+], AppAdsPage);
 
 export const EShop = createModule("E Shop", "Manage digital products, pricing, and shop settings.", ShoppingCart, [
     { label: "Daily Sales", value: "$12,450", trend: "up", change: "15%" }
-]);
+], EShopPage); // Use the new EShopPage component
 
 export const Licence = createModule("Licence", "Track and manage application licenses and activations.", Key, [
     { label: "Active Licences", value: "15,842", trend: "up", change: "450" }

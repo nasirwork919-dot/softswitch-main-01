@@ -9,13 +9,15 @@ import AddWebsite from "./pages/websites/AddWebsite";
 import SobAdmin from "./pages/sobAdmin/SobAdmin";
 import AddSobAdmin from "./pages/sobAdmin/AddSobAdmin";
 import Account from "./pages/account/Account";
-import AddStaffForm from "./pages/account/AddStaffForm"; // New import
+import AddStaffForm from "./pages/account/AddStaffForm";
 import ProxyVPN from "./pages/proxyvpn/ProxyVPN";
 import AddProxyVPN from "./pages/proxyvpn/AddProxyVPN";
 import Payload from "./pages/payload/Payload";
 
 // Updated import
 import { Domain, AppNotice, AppAds, EShop, Licence, Json, Email, Gateway, PanelAPI, OrderReport, PrivacyPolicy, Settings } from "./pages/modules";
+import EShopPage from "./pages/e-shop/EShopPage"; // Import EShopPage
+import AddProduct from "./pages/e-shop/AddProduct"; // Import AddProduct
 
 import Users from "./pages/user/Users";
 import AddUser from "./pages/user/AddUser";
@@ -49,7 +51,7 @@ const App = () => {
           <Route path="users" element={<Users />} />
           <Route path="users/add" element={<AddUser />} />
           <Route path="account" element={<Account />} />
-          <Route path="account/add" element={<AddStaffForm />} /> {/* New route */}
+          <Route path="account/add" element={<AddStaffForm />} />
           <Route path="reseller" element={<Reseller />} />
           <Route path="reseller/add" element={<AddReseller />} />
 
@@ -75,7 +77,8 @@ const App = () => {
           <Route path="app-ads/add" element={<AddPanelNotice />} />
 
           {/* Management */}
-          <Route path="e-shop" element={<EShop />} />
+          <Route path="e-shop" element={<EShopPage />} /> {/* Use EShopPage */}
+          <Route path="e-shop/add" element={<AddProduct />} /> {/* New route for adding products */}
           <Route path="licence" element={<Licence />} />
           <Route path="json" element={<Json />} />
           <Route path="theme" element={<Theme />} />
