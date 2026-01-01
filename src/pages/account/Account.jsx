@@ -1,8 +1,10 @@
 import React from 'react';
 import ModulePage from '../../components/common/ModulePage';
 import { UserCircle, Users, Key, Shield } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Account = () => {
+    const navigate = useNavigate();
     // Mock data for account stats
     const stats = [
         { label: "Total Staff", value: "12", trend: "up", change: "2" },
@@ -25,13 +27,16 @@ const Account = () => {
                                 Manage access and permissions for administrative staff.
                             </p>
                         </div>
-                        <button className="flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white font-medium rounded-lg hover:bg-[var(--color-primary-hover)] transition-colors">
+                        <button 
+                            onClick={() => navigate('/account/add')}
+                            className="flex items-center gap-2 px-5 py-2.5 bg-[var(--color-primary)] text-white font-medium rounded-lg hover:bg-[var(--color-primary-hover)] transition-colors"
+                        >
                             <UserCircle className="w-4 h-4" />
                             Add Staff
                         </button>
                     </div>
 
-                    {/* Staff Table Placeholder */}
+                    {/* Staff Table Placeholder - Replace with actual table if data exists */}
                     <div className="text-center py-12">
                         <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-50 text-blue-600 mb-4">
                             <Users className="h-8 w-8" />

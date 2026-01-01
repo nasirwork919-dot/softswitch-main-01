@@ -9,8 +9,9 @@ import AddWebsite from "./pages/websites/AddWebsite";
 import SobAdmin from "./pages/sobAdmin/SobAdmin";
 import AddSobAdmin from "./pages/sobAdmin/AddSobAdmin";
 import Account from "./pages/account/Account";
+import AddStaffForm from "./pages/account/AddStaffForm"; // New import
 import ProxyVPN from "./pages/proxyvpn/ProxyVPN";
-import AddProxyVPN from "./pages/proxyvpn/AddProxyVPN"; // New import
+import AddProxyVPN from "./pages/proxyvpn/AddProxyVPN";
 import Payload from "./pages/payload/Payload";
 
 // Updated import
@@ -24,7 +25,7 @@ import Server from "./pages/server/Server";
 import AddServer from "./pages/server/AddServer";
 import DNS from "./pages/dns/DNS";
 import AddDNS from "./pages/dns/AddDNS";
-import AddAPI from "./pages/dns/AddAPI"; // Import AddAPI component
+import AddAPI from "./pages/dns/AddAPI";
 import Application from "./pages/application/Application";
 import AddApplication from "./pages/application/AddApplication";
 import PanelNotice from "./pages/notice/PanelNotice";
@@ -48,6 +49,7 @@ const App = () => {
           <Route path="users" element={<Users />} />
           <Route path="users/add" element={<AddUser />} />
           <Route path="account" element={<Account />} />
+          <Route path="account/add" element={<AddStaffForm />} /> {/* New route */}
           <Route path="reseller" element={<Reseller />} />
           <Route path="reseller/add" element={<AddReseller />} />
 
@@ -55,12 +57,12 @@ const App = () => {
           <Route path="server" element={<Server />} />
           <Route path="server/add" element={<AddServer />} />
           <Route path="proxy-vpn" element={<ProxyVPN />} />
-          <Route path="proxy-vpn/add" element={<AddProxyVPN />} /> {/* New route */}
-          <Route path="payload" element={<Payload />} /> {/* Updated route */}
+          <Route path="proxy-vpn/add" element={<AddProxyVPN />} />
+          <Route path="payload" element={<Payload />} />
           <Route path="domain" element={<Domain />} />
           <Route path="dns" element={<DNS />} />
           <Route path="dns/add" element={<AddDNS />} />
-          <Route path="dns/add-api" element={<AddAPI />} /> {/* Add route for AddAPI */}
+          <Route path="dns/add-api" element={<AddAPI />} />
 
           {/* Application */}
           <Route path="application" element={<Application />} />
