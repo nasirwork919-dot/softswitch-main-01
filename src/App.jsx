@@ -9,7 +9,7 @@ import AddWebsite from "./pages/websites/AddWebsite";
 import SobAdmin from "./pages/sobAdmin/SobAdmin";
 import AddSobAdmin from "./pages/sobAdmin/AddSobAdmin";
 import Account from "./pages/account/Account";
-import ProxyVPN from "./pages/proxyvpn/ProxyVPN";
+import ProxyVPN from "./pages/proxyvpn/ProxyVPN"; // Corrected import for ProxyVPN
 import Payload from "./pages/payload/Payload";
 
 // Updated import
