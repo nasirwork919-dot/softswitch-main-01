@@ -13,7 +13,7 @@ const PrivacyPolicy = () => {
         >
             <div className="p-6 sm:p-8 space-y-8 text-[var(--color-text)]">
                 <div className="bg-[var(--color-card-background)] rounded-xl shadow-sm border border-[var(--color-border)] p-6 space-y-6">
-                    <h2 className="text-2xl font-bold mb-4">Privacy Policy for [Your App Name] Admin Panel</h2>
+                    <h2 className="text-2xl font-bold mb-4">Privacy Policy for SoftSwift Admin Panel</h2>
                     <p className="text-sm text-[var(--color-text-secondary)]">
                         **Last Updated:** July 25, 2024
                     </p>
