@@ -18,8 +18,10 @@ import Payload from "./pages/payload/Payload";
 import { Domain, AppNotice, AppAds, EShop, Licence, Json, Email, Gateway, PanelAPI, OrderReport, PrivacyPolicy, Settings } from "./pages/modules";
 import EShopPage from "./pages/e-shop/EShopPage";
 import AddProduct from "./pages/e-shop/AddProduct";
-import LicencePage from "./pages/licence/LicencePage"; // Import LicencePage
-import AddLicence from "./pages/licence/AddLicence"; // Import AddLicence
+import LicencePage from "./pages/licence/LicencePage";
+import AddLicence from "./pages/licence/AddLicence";
+import JsonPage from "./pages/json/JsonPage"; // Import JsonPage
+import AddJson from "./pages/json/AddJson";     // Import AddJson
 
 import Users from "./pages/user/Users";
 import AddUser from "./pages/user/AddUser";
@@ -81,9 +83,10 @@ const App = () => {
           {/* Management */}
           <Route path="e-shop" element={<EShopPage />} />
           <Route path="e-shop/add" element={<AddProduct />} />
-          <Route path="licence" element={<LicencePage />} /> {/* Use LicencePage */}
-          <Route path="licence/add" element={<AddLicence />} /> {/* New route for adding licences */}
-          <Route path="json" element={<Json />} />
+          <Route path="licence" element={<LicencePage />} />
+          <Route path="licence/add" element={<AddLicence />} />
+          <Route path="json" element={<JsonPage />} /> {/* New route for JSON listing */}
+          <Route path="json/add" element={<AddJson />} />     {/* New route for adding JSON files */}
           <Route path="theme" element={<Theme />} />
 
           {/* System */}

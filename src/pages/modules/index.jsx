@@ -10,7 +10,8 @@ import GatewaySettingsForm from '../gateway/GatewaySettingsForm';
 import AppNoticePage from './AppNoticePage';
 import AppAdsPage from './AppAdsPage';
 import EShopPage from '../e-shop/EShopPage';
-import LicencePage from '../licence/LicencePage'; // Import LicencePage
+import LicencePage from '../licence/LicencePage';
+import JsonPage from '../json/JsonPage'; // Import the new JsonPage
 
 const TablePlaceholder = () => (
     <div className="p-8 text-center">
@@ -87,11 +88,11 @@ export const EShop = createModule("E Shop", "Manage digital products, pricing, a
 
 export const Licence = createModule("Licence", "Track and manage application licenses and activations.", Key, [
     { label: "Active Licences", value: "15,842", trend: "up", change: "450" }
-], LicencePage); // Use the new LicencePage component
+], LicencePage);
 
 export const Json = createModule("JSON Configuration", "Directly manage system JSON configuration files.", FileCode, [
     { label: "Total Files", value: "42", trend: "up", change: "Stable" }
-]);
+], JsonPage); // Use the new JsonPage component
 
 export const Theme = createModule("Theme", "Customize the visual appearance and branding of the panel.", Palette, [
     { label: "Active Theme", value: "Premium Blue", trend: "up", change: "Modern" }
