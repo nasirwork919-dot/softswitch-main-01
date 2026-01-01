@@ -11,7 +11,11 @@ import AppNoticePage from './AppNoticePage';
 import AppAdsPage from './AppAdsPage';
 import EShopPage from '../e-shop/EShopPage';
 import LicencePage from '../licence/LicencePage';
-import JsonPage from '../json/JsonPage'; // Import the new JsonPage
+import JsonPage from '../json/JsonPage';
+import PanelApiPage from '../panelapi/PanelApiPage'; // New import
+import ConfigVersionPage from '../configversion/ConfigVersionPage'; // New import
+import OrderReportPage from '../orderreport/OrderReportPage'; // New import
+
 
 const TablePlaceholder = () => (
     <div className="p-8 text-center">
@@ -92,7 +96,7 @@ export const Licence = createModule("Licence", "Track and manage application lic
 
 export const Json = createModule("JSON Configuration", "Directly manage system JSON configuration files.", FileCode, [
     { label: "Total Files", value: "42", trend: "up", change: "Stable" }
-], JsonPage); // Use the new JsonPage component
+], JsonPage);
 
 export const Theme = createModule("Theme", "Customize the visual appearance and branding of the panel.", Palette, [
     { label: "Active Theme", value: "Premium Blue", trend: "up", change: "Modern" }
@@ -108,11 +112,15 @@ export const Gateway = createModule("Gateway", "Manage payment gateways and tran
 
 export const PanelAPI = createModule("Panel API", "Manage API keys and external integration settings.", Code2, [
     { label: "Daily Requests", value: "2.5M", trend: "up", change: "0.2M" }
-]);
+], PanelApiPage); // Updated to use PanelApiPage
+
+export const ConfigVersion = createModule("Config Version", "Manage application configuration versions.", HardDrive, [
+    { label: "Total Versions", value: "15", trend: "up", change: "2" }
+], ConfigVersionPage); // Updated to use ConfigVersionPage
 
 export const OrderReport = createModule("Order Report", "Detailed reporting and analytics for all system orders.", FileBarChart, [
     { label: "Monthly Rev", value: "$452k", trend: "up", change: "12%" }
-]);
+], OrderReportPage); // Updated to use OrderReportPage
 
 export const PrivacyPolicy = createModule("Privacy Policy", "Edit and manage system privacy and legal documents.", ShieldAlert, [
     { label: "Last Updated", value: "2 Days ago", trend: "up", change: "v1.4" }

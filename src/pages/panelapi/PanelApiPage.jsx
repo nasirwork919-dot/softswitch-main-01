@@ -1,0 +1,143 @@
+"use client";
+
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Key, Search, Plus, Activity, Edit2, Trash2 } from 'lucide-react';
+import Table from '../../components/common/Table';
+import HeroSection from '../../components/panelapi/HeroSection';
+import { toast } from 'react-hot-toast';
+
+const PanelApiPage = () => {
+    const navigate = useNavigate();
+    const [searchText, setSearchText] = useState("");
+    const columns = [
+        { header: "API Key", accessor: "apiKey" },
+        { header: "Description", accessor: "description" },
+        {
+            header: "Status",
+            accessor: "status",
+            render: (row) => (
+                <span className={`px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wide ${row.status === 'Active' ? 'bg-green-100 text-green-700' :
+                        row.status === 'Inactive' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-700'
+                    }`}>
+                    {row.status}
+                </span>
+            )
+        },
+        { header: "Last Used", accessor: "lastUsed" },
+    ];
+
+    // Mock data for API keys
+    const [apiKeys, setApiKeys] = useState([
+        { id: 1, apiKey: "sk_live_xxxxxxxxxxxx", description: "Stripe Integration", status: "Active", lastUsed: "2024-07-20" },
+        { id: 2, apiKey: "pk_test_yyyyyyyyyyyy", description: "PayPal Sandbox", status: "Inactive", lastUsed: "2024-07-10" },
+        { id: 3, apiKey: "gh_token_zzzzzzzzzz", description: "GitHub Webhook", status: "Active", lastUsed: "2024-07-22" },
+    ]);
+
+    const filteredApiKeys = apiKeys.filter(key =>
+        key.apiKey.toLowerCase().includes(searchText.toLowerCase()) ||
+        key.description.toLowerCase().includes(searchText.toLowerCase())
+    );
+
+    const handleDelete = (id) => {
+        if (window.confirm("Are you sure you want to delete this API key?")) {
+            setApiKeys(apiKeys.filter(key => key.id !== id));
+            toast.success('API key deleted successfully!');
+        }
+    };
+
+    const handleEdit = (id) => {
+        console.log(`Editing API key ${id}`);
+        toast.info(`Editing API key ${id} (functionality to be implemented)`);
+    };
+
+    return (
+        <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 pb-12">
+            <HeroSection />
+
+            {/* STATUS LEGEND */}
+            <div className="mt-8 mb-4">
+                <div className="bg-white rounded-2xl border border-gray-100 p-4 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                    <div className="flex items-center gap-3">
+                        <Activity className="h-5 w-5 text-indigo-600" />
+                        <span className="text-sm font-bold text-gray-700 uppercase tracking-wide">API Key Status:</span>
+                    </div>
+                    <div className="flex flex-wrap gap-4 text-xs font-medium text-gray-600">
+                        <div className="flex items-center gap-2">
+                            <span className="w-2 h-2 rounded-full bg-green-500" />
+                            <span className="bg-green-100 text-green-700 px-2 py-0.5 rounded font-bold">ACTIVE</span>
+                            <span>- Currently in use</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <span className="w-2 h-2 rounded-full bg-red-500" />
+                            <span className="bg-red-100 text-red-700 px-2 py-0.5 rounded font-bold">INACTIVE</span>
+                            <span>- Not active or revoked</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                            <span className="w-2 h-2 rounded-full bg-yellow-500" />
+                            <span className="bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded font-bold">EXPIRED</span>
+                            <span>- Past expiry date</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* SEARCH & FILTER CARD */}
+            <div className="bg-white rounded-[2rem] border border-gray-100 shadow-sm p-8 mb-8">
+                <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+                    <h2 className="text-xl font-bold text-gray-900 tracking-tight">API Keys</h2>
+                    <button
+                        onClick={() => navigate('/panel-api/add')}
+                        className="flex items-center gap-2 px-6 py-2.5 bg-indigo-600 text-white font-bold rounded-xl shadow-lg shadow-indigo-200 hover:bg-indigo-700 transition-all active:scale-95"
+                    >
+                        <Plus className="h-5 w-5" />
+                        Add API Key
+                    </button>
+                </div>
+                <div className="relative">
+                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+                    <input
+                        type="text"
+                        placeholder="Search API keys or descriptions..."
+                        className="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-100 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-200 transition-all"
+                        value={searchText}
+                        onChange={(e) => setSearchText(e.target.value)}
+                    />
+                </div>
+            </div>
+
+            {/* TABLE */}
+            <div className="bg-white rounded-[2rem] border border-gray-100 shadow-sm p-8 overflow-hidden">
+                <Table
+                    title=""
+                    columns={columns}
+                    data={filteredApiKeys}
+                    actions={(row) => (
+                        <div className="flex gap-2">
+                            <button
+                                onClick={() => handleEdit(row.id)}
+                                className="p-2 text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
+                                title="Edit"
+                            >
+                                <Edit2 className="h-4 w-4" />
+                            </button>
+                            <button
+                                onClick={() => handleDelete(row.id)}
+                                className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                                title="Delete"
+                            >
+                                <Trash2 className="h-4 w-4" />
+                            </button>
+                        </div>
+                    )}
+                />
+                {filteredApiKeys.length === 0 && (
+                    <div className="text-center py-12 text-gray-400 text-sm italic">
+                        No API keys found.
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+};
+export default PanelApiPage;

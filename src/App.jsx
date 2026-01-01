@@ -20,8 +20,8 @@ import EShopPage from "./pages/e-shop/EShopPage";
 import AddProduct from "./pages/e-shop/AddProduct";
 import LicencePage from "./pages/licence/LicencePage";
 import AddLicence from "./pages/licence/AddLicence";
-import JsonPage from "./pages/json/JsonPage"; // Import JsonPage
-import AddJson from "./pages/json/AddJson";     // Import AddJson
+import JsonPage from "./pages/json/JsonPage";
+import AddJson from "./pages/json/AddJson";
 
 import Users from "./pages/user/Users";
 import AddUser from "./pages/user/AddUser";
@@ -37,6 +37,15 @@ import AddApplication from "./pages/application/AddApplication";
 import PanelNotice from "./pages/notice/PanelNotice";
 import AddPanelNotice from "./pages/notice/AddPanelNotice";
 import Theme from "./pages/theme/Theme";
+
+// New imports for Panel API, Config Version, Order Report
+import PanelApiPage from "./pages/panelapi/PanelApiPage";
+import AddApiKey from "./pages/panelapi/AddApiKey";
+import ConfigVersionPage from "./pages/configversion/ConfigVersionPage";
+import AddConfigVersion from "./pages/configversion/AddConfigVersion";
+import OrderReportPage from "./pages/orderreport/OrderReportPage";
+import GenerateReport from "./pages/orderreport/GenerateReport";
+
 
 const App = () => {
   return (
@@ -85,15 +94,19 @@ const App = () => {
           <Route path="e-shop/add" element={<AddProduct />} />
           <Route path="licence" element={<LicencePage />} />
           <Route path="licence/add" element={<AddLicence />} />
-          <Route path="json" element={<JsonPage />} /> {/* New route for JSON listing */}
-          <Route path="json/add" element={<AddJson />} />     {/* New route for adding JSON files */}
+          <Route path="json" element={<JsonPage />} />
+          <Route path="json/add" element={<AddJson />} />
           <Route path="theme" element={<Theme />} />
 
           {/* System */}
           <Route path="email" element={<Email />} />
           <Route path="gateway" element={<Gateway />} />
-          <Route path="panel-api" element={<PanelAPI />} />
-          <Route path="order-report" element={<OrderReport />} />
+          <Route path="panel-api" element={<PanelApiPage />} /> {/* Updated route */}
+          <Route path="panel-api/add" element={<AddApiKey />} /> {/* New route */}
+          <Route path="config-version" element={<ConfigVersionPage />} /> {/* Updated route */}
+          <Route path="config-version/add" element={<AddConfigVersion />} /> {/* New route */}
+          <Route path="order-report" element={<OrderReportPage />} /> {/* Updated route */}
+          <Route path="order-report/generate" element={<GenerateReport />} /> {/* New route */}
 
           {/* Settings */}
           <Route path="privacy-policy" element={<PrivacyPolicy />} />
