@@ -15,6 +15,7 @@ import JsonPage from '../json/JsonPage';
 import PanelApiPage from '../panelapi/PanelApiPage'; // New import
 import ConfigVersionPage from '../configversion/ConfigVersionPage'; // New import
 import OrderReportPage from '../orderreport/OrderReportPage'; // New import
+import SettingsPage from '../settings/Settings'; // Import the actual Settings page
 
 
 const TablePlaceholder = () => (
@@ -128,4 +129,4 @@ export const PrivacyPolicy = createModule("Privacy Policy", "Edit and manage sys
 
 export const Settings = createModule("Settings", "Configure global system preferences and panel behavior.", SettingsIcon, [
     { label: "Configuration", value: "Active", trend: "up", change: "Stable" }
-]);
+], SettingsPage); // Updated to use the actual SettingsPage
