@@ -9,7 +9,8 @@ import EmailSettingsForm from '../email/EmailSettingsForm';
 import GatewaySettingsForm from '../gateway/GatewaySettingsForm';
 import AppNoticePage from './AppNoticePage';
 import AppAdsPage from './AppAdsPage';
-import EShopPage from '../e-shop/EShopPage'; // Import the new EShopPage
+import EShopPage from '../e-shop/EShopPage';
+import LicencePage from '../licence/LicencePage'; // Import LicencePage
 
 const TablePlaceholder = () => (
     <div className="p-8 text-center">
@@ -82,11 +83,11 @@ export const AppAds = createModule("App Ads", "Configure and monitor in-app adve
 
 export const EShop = createModule("E Shop", "Manage digital products, pricing, and shop settings.", ShoppingCart, [
     { label: "Daily Sales", value: "$12,450", trend: "up", change: "15%" }
-], EShopPage); // Use the new EShopPage component
+], EShopPage);
 
 export const Licence = createModule("Licence", "Track and manage application licenses and activations.", Key, [
     { label: "Active Licences", value: "15,842", trend: "up", change: "450" }
-]);
+], LicencePage); // Use the new LicencePage component
 
 export const Json = createModule("JSON Configuration", "Directly manage system JSON configuration files.", FileCode, [
     { label: "Total Files", value: "42", trend: "up", change: "Stable" }

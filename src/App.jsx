@@ -16,8 +16,10 @@ import Payload from "./pages/payload/Payload";
 
 // Updated import
 import { Domain, AppNotice, AppAds, EShop, Licence, Json, Email, Gateway, PanelAPI, OrderReport, PrivacyPolicy, Settings } from "./pages/modules";
-import EShopPage from "./pages/e-shop/EShopPage"; // Import EShopPage
-import AddProduct from "./pages/e-shop/AddProduct"; // Import AddProduct
+import EShopPage from "./pages/e-shop/EShopPage";
+import AddProduct from "./pages/e-shop/AddProduct";
+import LicencePage from "./pages/licence/LicencePage"; // Import LicencePage
+import AddLicence from "./pages/licence/AddLicence"; // Import AddLicence
 
 import Users from "./pages/user/Users";
 import AddUser from "./pages/user/AddUser";
@@ -77,9 +79,10 @@ const App = () => {
           <Route path="app-ads/add" element={<AddPanelNotice />} />
 
           {/* Management */}
-          <Route path="e-shop" element={<EShopPage />} /> {/* Use EShopPage */}
-          <Route path="e-shop/add" element={<AddProduct />} /> {/* New route for adding products */}
-          <Route path="licence" element={<Licence />} />
+          <Route path="e-shop" element={<EShopPage />} />
+          <Route path="e-shop/add" element={<AddProduct />} />
+          <Route path="licence" element={<LicencePage />} /> {/* Use LicencePage */}
+          <Route path="licence/add" element={<AddLicence />} /> {/* New route for adding licences */}
           <Route path="json" element={<Json />} />
           <Route path="theme" element={<Theme />} />
 
