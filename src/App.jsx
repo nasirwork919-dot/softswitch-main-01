@@ -9,7 +9,8 @@ import AddWebsite from "./pages/websites/AddWebsite";
 import SobAdmin from "./pages/sobAdmin/SobAdmin";
 import AddSobAdmin from "./pages/sobAdmin/AddSobAdmin";
 import Account from "./pages/account/Account";
-import ProxyVPN from "./pages/proxyvpn/ProxyVPN"; // Corrected import for ProxyVPN
+import ProxyVPN from "./pages/proxyvpn/ProxyVPN";
+import AddProxyVPN from "./pages/proxyvpn/AddProxyVPN"; // New import
 import Payload from "./pages/payload/Payload";
 
 // Updated import
@@ -54,6 +55,7 @@ const App = () => {
           <Route path="server" element={<Server />} />
           <Route path="server/add" element={<AddServer />} />
           <Route path="proxy-vpn" element={<ProxyVPN />} />
+          <Route path="proxy-vpn/add" element={<AddProxyVPN />} /> {/* New route */}
           <Route path="payload" element={<Payload />} /> {/* Updated route */}
           <Route path="domain" element={<Domain />} />
           <Route path="dns" element={<DNS />} />
