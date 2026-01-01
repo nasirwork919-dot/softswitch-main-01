@@ -1,6 +1,6 @@
 import React from 'react';
 import ModulePage from '../../components/common/ModulePage';
-import { ShieldCheck, Plus, Activity } from 'lucide-react';
+import { ShieldCheck, Plus, Activity, Search } from 'lucide-react';
 
 const ProxyVPN = () => {
     // Mock data for proxy VPN stats
