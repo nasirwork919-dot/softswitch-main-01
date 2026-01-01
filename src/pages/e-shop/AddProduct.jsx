@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import ModulePage from '../../components/common/ModulePage';
-import { ShoppingCart, Plus, Tag, DollarSign, Package, FileText } from 'lucide-react';
+import { ShoppingCart, Plus, Tag, DollarSign, Package, FileText, Activity } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 
