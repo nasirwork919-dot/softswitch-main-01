@@ -16,6 +16,7 @@ import PanelApiPage from '../panelapi/PanelApiPage'; // New import
 import ConfigVersionPage from '../configversion/ConfigVersionPage'; // New import
 import OrderReportPage from '../orderreport/OrderReportPage'; // New import
 import SettingsPage from '../settings/Settings'; // Import the actual Settings page
+import PrivacyPolicyPage from '../privacyPolicy/PrivacyPolicy'; // Import the new PrivacyPolicy page
 
 
 const TablePlaceholder = () => (
@@ -125,7 +126,7 @@ export const OrderReport = createModule("Order Report", "Detailed reporting and 
 
 export const PrivacyPolicy = createModule("Privacy Policy", "Edit and manage system privacy and legal documents.", ShieldAlert, [
     { label: "Last Updated", value: "2 Days ago", trend: "up", change: "v1.4" }
-]);
+], PrivacyPolicyPage); // Updated to use the actual PrivacyPolicyPage
 
 export const Settings = createModule("Settings", "Configure global system preferences and panel behavior.", SettingsIcon, [
     { label: "Configuration", value: "Active", trend: "up", change: "Stable" }

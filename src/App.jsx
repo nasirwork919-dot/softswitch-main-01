@@ -15,7 +15,7 @@ import AddProxyVPN from "./pages/proxyvpn/AddProxyVPN";
 import Payload from "./pages/payload/Payload";
 
 // Updated import
-import { Domain, AppNotice, AppAds, EShop, Licence, Json, Email, Gateway, PanelAPI, OrderReport, PrivacyPolicy, Settings } from "./pages/modules";
+import { Domain, AppNotice, AppAds, EShop, Licence, Json, Email, Gateway, PanelAPI, OrderReport, Settings } from "./pages/modules";
 import EShopPage from "./pages/e-shop/EShopPage";
 import AddProduct from "./pages/e-shop/AddProduct";
 import LicencePage from "./pages/licence/LicencePage";
@@ -45,6 +45,7 @@ import ConfigVersionPage from "./pages/configversion/ConfigVersionPage";
 import AddConfigVersion from "./pages/configversion/AddConfigVersion";
 import OrderReportPage from "./pages/orderreport/OrderReportPage";
 import GenerateReport from "./pages/orderreport/GenerateReport";
+import PrivacyPolicy from "./pages/privacyPolicy/PrivacyPolicy"; // Import the new PrivacyPolicy page
 
 
 const App = () => {
