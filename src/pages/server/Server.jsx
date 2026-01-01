@@ -5,34 +5,74 @@ import Table from '../../components/common/Table';
 
 const Server = () => {
     const navigate = useNavigate();
-    const [servers, setServers] = useState([]);
+    const [servers, setServers] = useState([
+        {
+            id: 1,
+            name: "Primary Web Server",
+            service: "Web Hosting",
+            status: "Active",
+            location: "New York, US",
+            ip: "192.168.1.10"
+        },
+        {
+            id: 2,
+            name: "Database Server",
+            service: "MySQL",
+            status: "Active",
+            location: "London, UK",
+            ip: "192.168.1.20"
+        },
+        {
+            id: 3,
+            name: "Backup Server",
+            service: "Storage",
+            status: "Inactive",
+            location: "Tokyo, JP",
+            ip: "192.168.1.30"
+        }
+    ]);
     const [searchText, setSearchText] = useState("");
 
     const columns = [
         { header: "Name", accessor: "name" },
         { header: "Service", accessor: "service" },
-        {
-            header: "Status",
-            accessor: "status",
-            render: (row) => (
-                <span className={`px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wide ${row.status === 'Active' ? 'bg-green-100 text-green-700' :
-                        row.status === 'Inactive' ? 'bg-red-100 text-red-700' : 'bg-gray-100 text-gray-700'
-                    }`}>
-                    {row.status}
-                </span>
-            )
-        },
+        { header: "Status", accessor: "status", render: (row) => (
+            <span className={`px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wide ${
+                row.status === 'Active' ? 'bg-green-100 text-green-700' :
+                row.status === 'Inactive' ? 'bg-red-100 text-red-700' :
+                'bg-gray-100 text-gray-700'
+            }`}>
+                {row.status}
+            </span>
+        ) },
         { header: "Location", accessor: "location" },
+        { header: "IP Address", accessor: "ip" },
     ];
+
+    const handleDelete = (id) => {
+        if (window.confirm("Are you sure you want to delete this server?")) {
+            setServers(servers.filter(server => server.id !== id));
+        }
+    };
+
+    const handleRefresh = (id) => {
+        // In a real app, this would trigger an API call to refresh server status
+        console.log(`Refreshing server ${id}`);
+        alert(`Refreshing server ${id} status...`);
+    };
+
+    const filteredServers = servers.filter(server =>
+        server.name.toLowerCase().includes(searchText.toLowerCase()) ||
+        server.location.toLowerCase().includes(searchText.toLowerCase()) ||
+        server.ip.includes(searchText)
+    );
 
     return (
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 pb-12">
-
             {/* HERO SECTION */}
             <div className="rounded-[2rem] mt-8 bg-gradient-to-br from-indigo-800 via-purple-700 to-indigo-900 px-6 sm:px-10 lg:px-12 py-8 sm:py-12 flex items-center min-h-[160px] sm:min-h-[200px] shadow-2xl shadow-indigo-200/50 relative overflow-hidden group">
                 <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-white/10 rounded-full blur-3xl group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute bottom-0 left-0 -ml-10 -mb-10 w-40 h-40 bg-purple-400/20 rounded-full blur-2xl" />
-
                 <div className="text-left text-white max-w-2xl relative z-10">
                     <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-white text-[10px] font-bold uppercase tracking-wider mb-4 border border-white/20">
                         <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
@@ -84,7 +124,6 @@ const Server = () => {
                         Add Server
                     </button>
                 </div>
-
                 <div className="relative">
                     <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
                     <input
@@ -103,15 +142,27 @@ const Server = () => {
                 <Table
                     title=""
                     columns={columns}
-                    data={servers}
-                    actions={() => (
+                    data={filteredServers}
+                    actions={(row) => (
                         <div className="flex gap-2">
-                            <button className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"><RefreshCw className="h-4 w-4" /></button>
-                            <button className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors"><Trash2 className="h-4 w-4" /></button>
+                            <button
+                                onClick={() => handleRefresh(row.id)}
+                                className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                                title="Refresh"
+                            >
+                                <RefreshCw className="h-4 w-4" />
+                            </button>
+                            <button
+                                onClick={() => handleDelete(row.id)}
+                                className="p-2 text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+                                title="Delete"
+                            >
+                                <Trash2 className="h-4 w-4" />
+                            </button>
                         </div>
                     )}
                 />
-                {servers.length === 0 && (
+                {filteredServers.length === 0 && (
                     <div className="text-center py-12">
                         <div className="bg-indigo-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                             <ServerIcon className="h-8 w-8 text-indigo-400" />
@@ -121,7 +172,6 @@ const Server = () => {
                     </div>
                 )}
             </div>
-
         </div>
     );
 };
